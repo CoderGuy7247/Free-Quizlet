@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyFlow</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header class="topbar">
+    <div class="logo">StudyFlow</div>
+
+    <div class="top-actions">
+      <button id="sortButton">Sort</button>
+      <button id="shuffleButton">Shuffle</button>
+      <button id="restartButton">Restart</button>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <input
+      id="setTitle"
+      class="set-title"
+      value="My Study Set"
+      placeholder="Study set title"
+    >
+
+    <div class="progress">
+      <div class="progress-top">
+        <span>Progress</span>
+        <span id="progressText">0 / 0</span>
+      </div>
+
+      <div class="progress-track">
+        <div id="progressBar" class="progress-fill"></div>
+      </div>
+    </div>
+
+    <nav class="tabs">
+
+      <button class="tab active" data-mode="flashcards">
+        Flashcards
+      </button>
+
+      <button class="tab" data-mode="multiple">
+        Multiple Choice
+      </button>
+
+      <button class="tab" data-mode="typing">
+        Type Answer
+      </button>
+
+      <button class="tab" data-mode="autosorter">
+        Auto Sorter
+      </button>
+
+    </nav>
+
+
+    <!-- FLASHCARDS -->
+
+    <section id="flashcardsMode" class="mode active">
+
+      <div id="flashcard" class="flashcard">
+
+        <div class="flashcard-inner">
+
+          <div class="flashcard-face flashcard-front">
+            <div class="card-label">QUESTION</div>
+            <div id="flashcardQuestion" class="card-text">
+              Add some cards to get started.
+            </div>
+            <div class="flip-hint">Click to flip</div>
+          </div>
+
+          <div class="flashcard-face flashcard-back">
+            <div class="card-label">ANSWER</div>
+            <div id="flashcardAnswer" class="card-text"></div>
+            <div class="flip-hint">Click to flip back</div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="card-controls">
+
+        <button id="previousButton" class="control-button">
+          ← Previous
+        </button>
+
+        <button id="flipButton" class="flip-button">
+          Flip
+        </button>
+
+        <button id="nextButton" class="control-button">
+          Next →
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- MULTIPLE CHOICE -->
+
+    <section id="multipleMode" class="mode">
+
+      <div class="question-card">
+        <div class="card-label">QUESTION</div>
+        <div id="multipleQuestion" class="large-question"></div>
+      </div>
+
+      <div id="choices" class="choices"></div>
+
+      <div id="multipleFeedback" class="feedback"></div>
+
+      <div id="scoreText" class="score">
+        Score: 0
+      </div>
+
+    </section>
+
+
+    <!-- TYPE ANSWER -->
+
+    <section id="typingMode" class="mode">
+
+      <div class="question-card">
+        <div class="card-label">QUESTION</div>
+        <div id="typingQuestion" class="large-question"></div>
+      </div>
+
+      <div class="typing-form">
+
+        <input
+          id="typingInput"
+          type="text"
+          placeholder="Type your answer..."
+          autocomplete="off"
+        >
+
+        <button id="checkAnswerButton" class="primary-button">
+          Check Answer
+        </button>
+
+      </div>
+
+      <div id="typingFeedback" class="feedback"></div>
+
+    </section>
+
+
+    <!-- AUTO SORTER -->
+
+    <section id="autosorterMode" class="mode">
+
+      <div class="sorter-header">
+        <h2>Auto Sorter</h2>
+
+        <p>
+          Paste your questions and answers below.
+          Use one question and answer per line.
+        </p>
+      </div>
+
+      <textarea
+        id="autoSortInput"
+        class="auto-sort-input"
+        placeholder="Example:
+
+What is the capital of Canada? → Ottawa
+What is 2 + 2? → 4
+What is photosynthesis? → The process plants use to make food
+
+You can also use:
+Question = Answer
+Question | Answer
+Question : Answer"
+      ></textarea>
+
+      <div class="sorter-buttons">
+
+        <button id="autoSortButton" class="primary-button">
+          Create Cards
+        </button>
+
+        <button id="addToExistingButton" class="secondary-button">
+          Add to Existing
+        </button>
+
+        <button id="replaceCardsButton" class="danger-button">
+          Replace Cards
+        </button>
+
+      </div>
+
+      <div id="autoSortStatus" class="sorter-status"></div>
+
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
